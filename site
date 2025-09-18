@@ -62,17 +62,18 @@
         .logo {
             width: 70px;
             height: 70px;
-            background-color: var(--light-brown);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 3px solid var(--cream);
-            font-weight: bold;
-            font-size: 12px;
-            text-align: center;
-            padding: 5px;
-            color: var(--dark-green);
+            overflow: hidden;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .site-title {
@@ -316,6 +317,43 @@
             font-size: 0.9rem;
         }
         
+        /* Instructions Section */
+        .instructions {
+            background-color: var(--dark-brown);
+            padding: 40px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+        
+        .instructions h2 {
+            text-align: center;
+            color: var(--cream);
+            margin-bottom: 30px;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .step {
+            background-color: var(--light-brown);
+            color: var(--dark-green);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
@@ -387,8 +425,8 @@
         <div class="container header-content">
             <div class="logo-container">
                 <div class="logo">
-                    <!-- Placeholder for logo (121.png) -->
-                    <span>ERDENESAIKHAN</span>
+                    <!-- Replace this img tag with your logo -->
+                    <img src=121.PNG alt="Ethernal.S Logo">
                 </div>
                 <a href="#" class="site-title">Ethernal.S</a>
             </div>
@@ -407,8 +445,27 @@
     <section class="hero">
         <div class="container">
             <h1>Welcome to Ethernal.S</h1>
-            <p>Your journey into HTML and web development starts here. Explore resources, connect with others, and enhance your coding skills with our curated content.</p>
+            <p>Your journey into social places that you don't know starts here. Explore resources, connect with others, and discover, learn for more.</p>
             <a href="#coding" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section class="instructions container">
+        <h2>How to Add Your Logo</h2>
+        <div class="steps">
+            <div class="step">
+                <span class="step-number">1</span>
+                <p>Download your logo from Canva as a PNG file with a transparent background</p>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <p>Save the logo file in the same folder as your HTML file</p>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <p>Replace the current image source with your logo filename</p>
+            </div>
         </div>
     </section>
 
