@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethernal.S - HTML Beginner's Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-green: #1a4b2c;
+            --medium-green: #2d6a4f;
+            --light-green: #40916c;
+            --dark-brown: #7f5539;
+            --light-brown: #b08968;
+            --cream: #ddbea9;
+            --white: #f8f9fa;
+            --black: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--black) 100%);
+            color: var(--white);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(26, 75, 44, 0.9);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--cream);
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            color: var(--dark-green);
+        }
+        
+        .site-title {
+            color: var(--cream);
+            font-size: 2.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .site-title:hover {
+            color: var(--light-brown);
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--light-brown);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--light-brown);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at top right, var(--medium-green) 0%, transparent 40%);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--cream);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--white);
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--light-brown), var(--dark-brown));
+            color: white;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Sections Grid */
+        .sections {
+            padding: 80px 0;
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .section-card {
+            background: linear-gradient(145deg, rgba(45, 106, 79, 0.8), rgba(26, 75, 44, 0.8));
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(176, 137, 104, 0.2);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .section-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--light-brown), transparent);
+            opacity: 0.1;
+            transition: opacity 0.4s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-card:hover:before {
+            opacity: 0.2;
+        }
+        
+        .section-card i {
+            font-size: 4rem;
+            color: var(--light-brown);
+            margin-bottom: 20px;
+        }
+        
+        .section-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--cream);
+        }
+        
+        .section-card p {
+            color: var(--white);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            padding: 40px 0 20px;
+            color: var(--cream);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--cream);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--light-green);
+        }
+        
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-brown);
+            border-radius: 50%;
+            color: var(--dark-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            background-color: var(--cream);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(221, 190, 169, 0.3);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <!-- Placeholder for logo (121.png) -->
+                    <span>ERDENESAIKHAN</span>
+                </div>
+                <a href="#" class="site-title">Ethernal.S</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#coding">Coding</a></li>
+                    <li><a href="#social">Social</a></li>
+                    <li><a href="#development">In Development</a></li>
+                    <li><a href="#coming-soon">Coming Soon</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Ethernal.S</h1>
+            <p>Your journey into HTML and web development starts here. Explore resources, connect with others, and enhance your coding skills with our curated content.</p>
+            <a href="#coding" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Main Sections -->
+    <section class="sections container" id="coding">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: var(--cream);">Explore Our Sections</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; line-height: 1.6;">
+            Discover a variety of resources tailored for HTML beginners. Each section offers unique content to support your learning journey.
+        </p>
+        
+        <div class="section-grid">
+            <div class="section-card fade-in">
+                <i class="fas fa-code"></i>
+                <h3>Coding</h3>
+                <p>Learn HTML, CSS, and JavaScript with our beginner-friendly tutorials and code examples.</p>
+            </div>
+            
+            <div class="section-card fade-in delay-1">
+                <i class="fas fa-comments"></i>
+                <h3>Social</h3>
+                <p>Connect with other learners, share your projects, and get feedback from the community.</p>
+            </div>
+            
+            <div class="section-card fade-in delay-2">
+                <i class="fas fa-tools"></i>
+                <h3>In Development</h3>
+                <p>Check out what we're currently working on and upcoming features for the platform.</p>
+            </div>
+            
+            <div class="section-card fade-in delay-3">
+                <i class="fas fa-hourglass-half"></i>
+                <h3>Coming Soon</h3>
+                <p>Exciting new content and features are on the way. Stay tuned for updates!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Contact and Support -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Ethernal.S</h3>
+                    <p>Its a family friendly website to entertain and learn from others, you can play board game or might be started coding when you relize.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Me</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> gaccpablo@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +886 0934333451</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ulaanbaatar, Mongolia</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Wufeng, Taiwan</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support Me</h3>
+                    <p>If you find this content helpful, consider supporting my work to keep it free for everyone.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fas fa-university"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Erdenesaikhan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transition = 'opacity 0.8s ease';
+                observer.observe(element);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Make site title link to homepage
+            document.querySelector('.site-title').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
